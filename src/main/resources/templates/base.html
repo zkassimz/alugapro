@@ -1,45 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${title}">Gerenciamento de Aluguéis</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title th:text="${title}">Home - Gerenciamento de Aluguéis</title>
     <link href="/css/style.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/bs5-sidebar@1.0.4/dist/index.bundle.min.js"></script>
 </head>
-<body class="bg-dark text-light">
-
+<body>
     <div class="d-flex">
-        <!-- Menu Lateral (Drawer) -->
-        <div class="sidebar bg-black text-light p-3" style="width: 250px; min-height: 100vh;">
-            <h3 class="text-center mb-4">Menu</h3>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="/clientes">Listagem de Clientes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="/imoveis">Listagem de Imóveis</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="/regras">Regras</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="/contato">Contato</a>
-                </li>
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="/">Início</a></li>
+                <li><a href="/clientes">Clientes</a></li>
+                <li><a href="/imoveis">Imóveis</a></li>
+                <li><a href="/regras">Regras</a></li>
+                <li><a href="/contato">Contato</a></li>
             </ul>
         </div>
 
-        <!-- Área Principal -->
-        <div class="main-content p-4" style="flex: 1;">
-            <header class="d-flex justify-content-between align-items-center">
-                <h1>Gerenciamento de Aluguéis</h1>
-            </header>
-            <main class="mt-4">
-                <div th:insert="${content}"></div>
-            </main>
+ 
+        <div class="content" style="flex: 1; padding: 20px;">
+            <div class="container">
+                <h1>Bem-vindo ao Gerenciamento de Aluguéis</h1>
+                <div th:replace="~{home :: content}"></div> 
+            </div>
         </div>
     </div>
 
+    <script>
+        $(document).ready(function() {
+      
+            $('#toggle-drawer').on('click', function() {
+                $('.sidebar').toggleClass('active');
+            });
+        });
+    </script>
 </body>
 </html>

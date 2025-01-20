@@ -1,0 +1,109 @@
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #121212; /* Cor de fundo preta */
+    color: #fff;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 300px; /* Aumentando a largura do drawer */
+    background-color: #222;
+    padding: 15px;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: -300px; /* Começa fora da tela */
+    transition: left 0.3s;
+}
+
+.sidebar.active {
+    left: 0; /* Quando o drawer estiver ativo, ele aparecerá */
+}
+
+.sidebar h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #444;
+}
+
+/* Ícones no Menu */
+.sidebar ul li i {
+    margin-right: 10px;
+    font-size: 22px; /* Ajustando o tamanho do ícone */
+}
+
+/* Conteúdo principal */
+.content {
+    margin-left: 300px; /* O conteúdo ficará deslocado para a direita devido à sidebar */
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+
+.container-fluid {
+    max-width: 100%;
+}
+
+/* Estilo do botão de ativação do Drawer */
+#toggle-drawer {
+    font-size: 30px;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+#toggle-drawer:hover {
+    background-color: #444;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 250px; /* Reduzindo a largura para telas menores */
+        left: -250px; /* Drawer fora da tela por padrão */
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    #toggle-drawer {
+        left: 10px;
+        top: 10px;
+    }
+}

@@ -1,25 +1,66 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <h2 class="text-center mb-4">Listagem de Imóveis</h2>
-            <table class="table table-dark table-striped">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Cliente</th>
-                        <th>Imóvel</th>
-                        <th>Preço</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="imovel : ${imoveis}">
-                        <td th:text="${imovel.id}"></td>
-                        <td th:text="${imovel.cliente}"></td>
-                        <td th:text="${imovel.descricao}"></td>
-                        <td th:text="${imovel.preco}"></td>
-                    </tr>
-                </tbody>
-            </table>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Home - Gerenciamento de Aluguéis</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Font Awesome -->
+    <link href="/css/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/bs5-sidebar@1.0.4/dist/index.bundle.min.js"></script>
+</head>
+<body>
+    <!-- Sidebar (Drawer) -->
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="/"><i class="fas fa-home"></i> Início</a></li>
+            <li><a href="/clientes"><i class="fas fa-users"></i> Clientes</a></li>
+            <li><a href="/imoveis"><i class="fas fa-building"></i> Imóveis</a></li>
+            <li><a href="/regras"><i class="fas fa-gavel"></i> Regras</a></li>
+            <li><a href="/contato"><i class="fas fa-envelope"></i> Contato</a></li>
+        </ul>
+    </div>
+
+    <!-- Botão de Ativação do Drawer (para telas menores) -->
+    <button id="toggle-drawer" class="btn btn-dark"><i class="fas fa-bars"></i></button>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center mb-4">Listagem de Imóveis</h2>
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Cliente</th>
+                                <th>Imóvel</th>
+                                <th>Preço</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="imovel : ${imoveis}">
+                                <td th:text="${imovel.id}"></td>
+                                <td th:text="${imovel.cliente}"></td>
+                                <td th:text="${imovel.descricao}"></td>
+                                <td th:text="${imovel.preco}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+
+    <script>
+        // Função para ativar o drawer quando o botão for clicado
+        $(document).ready(function() {
+            $('#toggle-drawer').on('click', function() {
+                $('.sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+</html>
